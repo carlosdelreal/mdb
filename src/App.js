@@ -3,19 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-
-	state = {
-		isTextVisible: false
-	}
-
-	showHideText = () => {
-		this.setState({
-			isTextVisible: !this.state.isTextVisible
-		});
+	handleSubmit = () => {
+		console.log(this.text.value);
 	}
 
 	render() {
-		const {isTextVisible} = this.state;
 		return (
 			<div className="App">
 				<header className="App-header">
@@ -24,14 +16,9 @@ class App extends Component {
 				<main>
 					<Welcome
 						text="This is the title"
-						isTextVisible={isTextVisible}
 					/>
-
-					<button onClick={this.showHideText}>Show / Hide</button>
-
-					{isTextVisible &&
-						<p>This should show and hide</p>
-					}
+					<input type="text" ref={(input) => this.text = input}/>
+					<button onClick={this.handleSubmit}>Show Value</button>
 				</main>
 			</div>
 		);
