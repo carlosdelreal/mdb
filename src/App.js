@@ -3,21 +3,53 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+	state = {
+		inputValueControlled: 'Controlled Input',
+		inputValueUncontrolled: 'Uncontrolled Input'
+	}
+
+	updateInput = (event) => {
+		this.setState({
+			inputValue: event.target.value.trim().toLowerCase()
+		});
+	}
+
 	handleSubmit = () => {
 		console.log(this.text.value);
 	}
 
 	render() {
+		const {
+			inputValueControlled,
+			inputValueUncontrolled
+		} = this.state;
+
 		return (
 			<div className="App">
 				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
+					<img
+						src={logo}
+						className="App-logo"
+						alt="logo"
+					/>
 				</header>
 				<main>
 					<Welcome
 						text="This is the title"
 					/>
-					<input type="text" ref={(input) => this.text = input}/>
+
+					<h3>{inputValueControlled}</h3>
+					<input
+						type="text"
+						onChange={this.updateInput}
+						value={inputValueControlled}
+					/>
+
+					<h3>{inputValueUncontrolled}</h3>
+					<input
+						type="text"
+						ref={(input) => this.text = input}
+					/>
 					<button onClick={this.handleSubmit}>Show Value</button>
 				</main>
 			</div>
