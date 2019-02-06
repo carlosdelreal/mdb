@@ -1,37 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import api from './api';
 
 import Movie from './Movie';
 
-const movies = [
-	{
-		id: 1,
-		title: 'Star Wars',
-		desc: 'Something something dark side...'
-	},
-	{
-		id: 2,
-		title: 'Spiderman'
-	},
-	{
-		id: 3,
-		title: 'Pulp Fiction'
-	}
-];
-
 class App extends Component {
+
+	state = {
+		movies: []
+	}
+
+	async componentDidMount() {
+		try {
+			const res = await fetch(api);
+			const movies = await res.json();
+			console.log(movies);
+			this.setState({
+				movies: movies.results
+			})
+		} catch (e) {
+			console.log(e);
+		}
+	}
+
 	render() {
+		const {movies} = this.state;
+
 		return (
 			<div className="App">
 				<header className="App-header">
-					<img
-						src={logo}
-						className="App-logo"
-						alt="logo"
-					/>
+					<h1>&lt; MDB &gt;</h1>
 				</header>
-				{movies.map(movie => <Movie key={movie.id} movie={movie} desc={movie.desc} />)}
+				{movies.map(movie => <Movie key={movie.id} movie={movie} />)}
 			</div>
 		);
 	}
