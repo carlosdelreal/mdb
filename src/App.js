@@ -2,28 +2,25 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Movie from './Movie';
+
+const movies = [
+	{
+		id: 1,
+		title: 'Star Wars'
+	},
+	{
+		id: 2,
+		title: 'Spiderman'
+	},
+	{
+		id: 3,
+		title: 'Pulp Fiction'
+	}
+];
+
 class App extends Component {
-	state = {
-		inputValueControlled: 'Controlled Input',
-		inputValueUncontrolled: 'Uncontrolled Input'
-	}
-
-	updateInput = (event) => {
-		this.setState({
-			inputValue: event.target.value.trim().toLowerCase()
-		});
-	}
-
-	handleSubmit = () => {
-		console.log(this.text.value);
-	}
-
 	render() {
-		const {
-			inputValueControlled,
-			inputValueUncontrolled
-		} = this.state;
-
 		return (
 			<div className="App">
 				<header className="App-header">
@@ -33,37 +30,8 @@ class App extends Component {
 						alt="logo"
 					/>
 				</header>
-				<main>
-					<Welcome
-						text="This is the title"
-					/>
-
-					<h3>{inputValueControlled}</h3>
-					<input
-						type="text"
-						onChange={this.updateInput}
-						value={inputValueControlled}
-					/>
-
-					<h3>{inputValueUncontrolled}</h3>
-					<input
-						type="text"
-						ref={(input) => this.text = input}
-					/>
-					<button onClick={this.handleSubmit}>Show Value</button>
-				</main>
+				{movies.map(movie => <Movie key={movie.id} movie={movie} />)}
 			</div>
-		);
-	}
-}
-
-class Welcome extends Component {
-	render() {
-		const {text, isTextVisible} = this.props;
-		console.log(isTextVisible);
-
-		return (
-			<h1 className="App-title">{text}</h1>
 		);
 	}
 }
