@@ -1,41 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {BrowserRouter as Router,
+	Route,
+	Switch,
+	Link
+} from 'react-router-dom';
 import './App.css';
 
-import api from './api';
+import MoviesList from './MoviesList';
+import MovieDetail from './MovieDetail';
 
-import Movie from './Movie';
+const App = () => (
+	<Router>
+		<div className="App">
+			<header className="App-header">
+				<Link
+					className="App-logo"
+					to="/"
+				>
+					<h1>&laquo; cine ó cena &raquo;</h1>
+				</Link>
+			</header>
+			<Switch>
+				<Route exact path="/" component={MoviesList} />
+				<Route path="/:id" component={MovieDetail} />
+			</Switch>
+		</div>
+	</Router>
+);
 
-class App extends Component {
-
-	state = {
-		movies: []
-	}
-
-	async componentDidMount() {
-		try {
-			const res = await fetch(api);
-			const movies = await res.json();
-			console.log(movies);
-			this.setState({
-				movies: movies.results
-			})
-		} catch (e) {
-			console.log(e);
-		}
-	}
-
-	render() {
-		const {movies} = this.state;
-
-		return (
-			<div className="App">
-				<header className="App-header">
-					<h1>&lt; MDB &gt;</h1>
-				</header>
-				{movies.map(movie => <Movie key={movie.id} movie={movie} />)}
-			</div>
-		);
-	}
-}
 
 export default App;
