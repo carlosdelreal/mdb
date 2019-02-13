@@ -5,9 +5,8 @@
 /* .App-logo {} */
 
 .App-header {
-	background-color: #282c34;
+	background-color: #111;
 	min-height: 60px;
-	margin-bottom: 40px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
