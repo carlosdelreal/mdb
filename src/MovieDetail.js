@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from  'styled-components';
+import Overdrive from 'react-overdrive';
 import { MOVIE_BASE_PATH, MOVIE_API } from './api';
 
 import {Poster} from './Movie';
@@ -30,7 +31,9 @@ class MovieDetail extends Component {
 		return (
 			<MovieWrapper backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`}>
 				<MovieInfo>
-					<Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+					<Overdrive id={movie.title}>
+						<Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+					</Overdrive>
 					<div>
 						<h2>{movie.title}</h2>
 						<h1>{movie.title}</h1>
