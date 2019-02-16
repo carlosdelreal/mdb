@@ -30,6 +30,13 @@ class MovieDetail extends Component {
 
 	render() {
 		const {movie} = this.state;
+		const date = new Date(movie.release_date);
+		var dateString = date.toLocaleDateString('en-US');
+		// var dateString = JSON.stringify(date).split('-');
+		console.log('====================================');
+		console.log(dateString);
+		console.log(typeof dateString);
+		console.log('====================================');
 
 		return (
 			<MovieWrapper
@@ -42,7 +49,7 @@ class MovieDetail extends Component {
 					</Overdrive>
 					<div>
 						<h1>{movie.title}</h1>
-						<h3>{movie.release_date}</h3>
+						<h3>{dateString}</h3>
 						<p>{movie.overview}</p>
 					</div>
 				</MovieInfo>
