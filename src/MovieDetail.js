@@ -30,8 +30,8 @@ class MovieDetail extends Component {
 
 	render() {
 		const {movie} = this.state;
-		const date = new Date(movie.release_date);
-		var dateString = date.toLocaleDateString('en-US');
+		const releaseDate = new Date(movie.release_date);
+		var releaseDateFormatted = releaseDate.toLocaleDateString('en-US', {timeZone: 'UTC'});
 
 		return (
 			<MovieWrapper
@@ -44,7 +44,7 @@ class MovieDetail extends Component {
 					</Overdrive>
 					<div>
 						<h1>{movie.title}</h1>
-						<h3>{dateString}</h3>
+						<h3>{releaseDateFormatted}</h3>
 						<p>{movie.overview}</p>
 					</div>
 				</MovieInfo>
