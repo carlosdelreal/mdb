@@ -32,11 +32,6 @@ class MovieDetail extends Component {
 		const {movie} = this.state;
 		const date = new Date(movie.release_date);
 		var dateString = date.toLocaleDateString('en-US');
-		// var dateString = JSON.stringify(date).split('-');
-		console.log('====================================');
-		console.log(dateString);
-		console.log(typeof dateString);
-		console.log('====================================');
 
 		return (
 			<MovieWrapper
