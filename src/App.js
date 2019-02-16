@@ -17,7 +17,7 @@ const App = () => (
 					className="App-logo"
 					to="/"
 				>
-					<h1>&laquo; cena ó cine &raquo; </h1>
+					cena + cine
 				</Link>
 			</header>
 			<Switch>

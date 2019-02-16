@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { MOVIE_BASE_PATH, MOVIE_API } from './api';
 import Movie from './Movie';
 
-class MoviesList extends Component {
+class MoviesList extends PureComponent {
 	state = {
 		movies: []
 	}
