@@ -31,7 +31,7 @@ class MovieDetail extends Component {
 	render() {
 		const {movie} = this.state;
 		const releaseDate = new Date(movie.release_date);
-		var releaseDateFormatted = releaseDate.toLocaleDateString('en-US', {timeZone: 'UTC'});
+		const releaseDateFormatted = releaseDate.toLocaleDateString('en-US', {timeZone: 'UTC'});
 
 		return (
 			<MovieWrapper
